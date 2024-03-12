@@ -17,6 +17,8 @@
 		70153A902B6A0867002863B3 /* JournalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70153A8F2B6A0867002863B3 /* JournalAppTests.swift */; };
 		70153A9A2B6A0867002863B3 /* JournalAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70153A992B6A0867002863B3 /* JournalAppUITests.swift */; };
 		70153A9C2B6A0867002863B3 /* JournalAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70153A9B2B6A0867002863B3 /* JournalAppUITestsLaunchTests.swift */; };
+		7086FADF2B9E5515002A31D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7086FADE2B9E5515002A31D9 /* LoginViewController.swift */; };
+		7086FAE32BA0341A002A31D9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7086FAE22BA0341A002A31D9 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		70153A952B6A0867002863B3 /* JournalAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournalAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70153A992B6A0867002863B3 /* JournalAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalAppUITests.swift; sourceTree = "<group>"; };
 		70153A9B2B6A0867002863B3 /* JournalAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7086FADE2B9E5515002A31D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7086FAE22BA0341A002A31D9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				70153A752B6A0863002863B3 /* AppDelegate.swift */,
 				70153A772B6A0863002863B3 /* SceneDelegate.swift */,
 				70153A792B6A0863002863B3 /* ViewController.swift */,
+				7086FADE2B9E5515002A31D9 /* LoginViewController.swift */,
+				7086FAE22BA0341A002A31D9 /* RegisterViewController.swift */,
 				70153A7B2B6A0863002863B3 /* Main.storyboard */,
 				70153A812B6A0866002863B3 /* Assets.xcassets */,
 				70153A832B6A0866002863B3 /* LaunchScreen.storyboard */,
@@ -264,6 +270,8 @@
 				70153A7A2B6A0863002863B3 /* ViewController.swift in Sources */,
 				70153A762B6A0863002863B3 /* AppDelegate.swift in Sources */,
 				70153A782B6A0863002863B3 /* SceneDelegate.swift in Sources */,
+				7086FAE32BA0341A002A31D9 /* RegisterViewController.swift in Sources */,
+				7086FADF2B9E5515002A31D9 /* LoginViewController.swift in Sources */,
 				70153A802B6A0863002863B3 /* JournalApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
