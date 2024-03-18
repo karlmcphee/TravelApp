@@ -6,26 +6,34 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController, UINavigationControllerDelegate {
     
     let loginLabel: UILabel = {
         let loginLabel = UILabel()
+        loginLabel.text = "Enter your credentials to login"
+        loginLabel.translatesAutoresizingMaskIntoConstraints = false
+        loginLabel.textColor = .black
+        loginLabel.textAlignment = .center
         return loginLabel
     }()
     
-    let userName: UITextField = {
-        let userName = UITextField(frame: CGRect(x: 10, y: 20, width: 20, height: 20))
-        userName.backgroundColor = .white
-        userName.placeholder = "Enter an email"
+    let emailData: UITextField = {
+        let emailData = UITextField(frame: CGRect(x: 10, y: 20, width: 20, height: 20))
+        emailData.translatesAutoresizingMaskIntoConstraints = false
+        emailData.backgroundColor = .white
+        emailData.placeholder = "Enter an email"
         
-        return userName
+        return emailData
     }()
     
-    let password: UITextField = {
-        let password = UITextField()
-        password.backgroundColor = .white
-        return password
+    let passwordData: UITextField = {
+        let passwordData = UITextField()
+        passwordData.translatesAutoresizingMaskIntoConstraints = false
+        passwordData.backgroundColor = .white
+        passwordData.placeholder = "Enter a password"
+        return passwordData
     }()
     
     let loginButton: UIButton = {
@@ -35,40 +43,68 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        button.translatesAutoresizingMaskIntoConstraints
         return button
         
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
         view.addSubview(loginLabel)
-        view.addSubview(userName)
-        view.addSubview(password)
+        view.addSubview(emailData)
+        view.addSubview(passwordData)
         view.addSubview(loginButton)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(onRegister))
         
         loginButton.addTarget(self, action: #selector(onLogin),
                               for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            loginLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginLabel.widthAnchor.constraint(equalToConstant: 300),
+            loginLabel.heightAnchor.constraint(equalToConstant: 300),
+            emailData.topAnchor.constraint(equalTo: loginLabel.bottomAnchor),
+            emailData.widthAnchor.constraint(equalToConstant: 250),
+            emailData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailData.heightAnchor.constraint(equalToConstant: 80),
+            passwordData.topAnchor.constraint(equalTo: emailData.bottomAnchor),
+            passwordData.widthAnchor.constraint(equalToConstant: 250),
+            passwordData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordData.heightAnchor.constraint(equalToConstant: 80),
+            ])
         // Do any additional setup after loading the view.
     }
     
     @objc func onLogin() {
-        if password.text == "" || userName.text == "" {
+        if passwordData.text == "" || emailData.text == "" {
             loginLabel.text = "Please enter a username and password"
         } else {
-            /*
-                Auth.auth().signIn(withEmail: emailLabel.text!, password: passwordLabel.text!) { (authdata, error) in
+            
+                Auth.auth().signIn(withEmail: emailData.text!, password: passwordData.text!) { (authdata, error) in
                     if error != nil {
                         self.makeAlert(titleInput: "Error!", messageInput: error?.localizedDescription ?? "Error")
                     } else {
                         self.performSegue(withIdentifier: "toFeedVC", sender: nil)
                     }
                 }
-             */
+             
         }
         
+    }
+    
+    private func makeAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: .alert)
+
+        // You can add actions using the following code
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close Alert", comment: "This closes alert"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+
+        // This part of code inits alert view
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func onRegister() {
