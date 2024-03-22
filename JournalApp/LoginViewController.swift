@@ -23,6 +23,8 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
         let emailData = UITextField(frame: CGRect(x: 10, y: 20, width: 20, height: 20))
         emailData.translatesAutoresizingMaskIntoConstraints = false
         emailData.backgroundColor = .white
+        emailData.layer.cornerRadius = 12
+        emailData.layer.borderWidth = 1
         emailData.placeholder = "Enter an email"
         
         return emailData
@@ -43,7 +45,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        button.translatesAutoresizingMaskIntoConstraints
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
     }()
@@ -69,11 +71,15 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
             emailData.topAnchor.constraint(equalTo: loginLabel.bottomAnchor),
             emailData.widthAnchor.constraint(equalToConstant: 250),
             emailData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emailData.heightAnchor.constraint(equalToConstant: 80),
+            emailData.heightAnchor.constraint(equalToConstant: 50),
             passwordData.topAnchor.constraint(equalTo: emailData.bottomAnchor),
             passwordData.widthAnchor.constraint(equalToConstant: 250),
             passwordData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordData.heightAnchor.constraint(equalToConstant: 80),
+            passwordData.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.topAnchor.constraint(equalTo: passwordData.bottomAnchor),
+            loginButton.widthAnchor.constraint(equalToConstant: 250),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 80),
             ])
         // Do any additional setup after loading the view.
     }

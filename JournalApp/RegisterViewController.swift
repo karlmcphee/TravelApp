@@ -8,18 +8,23 @@
 import UIKit
 import Firebase
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     
     let registerLabel: UILabel = {
         let loginLabel = UILabel()
-        loginLabel.text = "Hello"
+        loginLabel.text = "Sign up here"
         loginLabel.textColor = .green
+        loginLabel.textAlignment = .center
+        loginLabel.translatesAutoresizingMaskIntoConstraints = false
         return loginLabel
     }()
     
     let emailData: UITextField = {
-        let emailData = UITextField(frame: CGRect(x: 10, y: 20, width: 20, height: 20))
+        let emailData = UITextField()
         emailData.backgroundColor = .white
+        emailData.layer.cornerRadius = 12
+        emailData.layer.borderWidth = 1
+        emailData.translatesAutoresizingMaskIntoConstraints = false
         emailData.placeholder = "Enter an email"
         
         return emailData
@@ -28,6 +33,10 @@ class RegisterViewController: UIViewController {
     let passwordData: UITextField = {
         let passwordData = UITextField()
         passwordData.backgroundColor = .white
+        passwordData.layer.cornerRadius = 12
+        passwordData.layer.borderWidth = 1
+        passwordData.translatesAutoresizingMaskIntoConstraints = false
+        passwordData.placeholder = "Enter an password"
         return passwordData
     }()
     
@@ -38,7 +47,7 @@ class RegisterViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
-
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         return button
         
@@ -46,11 +55,32 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
-        
-        
+        view.backgroundColor = .white
+        view.addSubview(registerLabel)
+        view.addSubview(emailData)
+        view.addSubview(passwordData)
+        view.addSubview(registerButton)
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(onSwitch))
         registerButton.addTarget(self, action: #selector(didRegister), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+        registerLabel.topAnchor.constraint(equalTo: view.topAnchor),
+        registerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        registerLabel.widthAnchor.constraint(equalToConstant: 300),
+        registerLabel.heightAnchor.constraint(equalToConstant: 300),
+        emailData.topAnchor.constraint(equalTo: registerLabel.bottomAnchor),
+        emailData.widthAnchor.constraint(equalToConstant: 250),
+        emailData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        emailData.heightAnchor.constraint(equalToConstant: 80),
+        passwordData.topAnchor.constraint(equalTo: emailData.bottomAnchor),
+        passwordData.widthAnchor.constraint(equalToConstant: 250),
+        passwordData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        passwordData.heightAnchor.constraint(equalToConstant: 80),
+        registerButton.topAnchor.constraint(equalTo: passwordData.bottomAnchor),
+        registerButton.widthAnchor.constraint(equalToConstant: 250),
+        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        registerButton.heightAnchor.constraint(equalToConstant: 80),
+        ])
 
         // Do any additional setup after loading the view.
     }
@@ -62,7 +92,9 @@ class RegisterViewController: UIViewController {
                 if error != nil {
                     self.makeAlert(titleInput: "Error!", messageInput: error?.localizedDescription ?? "Error")
                 } else {
-                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                    let vc = ViewController()
+                    vc.title = "Journal"
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
