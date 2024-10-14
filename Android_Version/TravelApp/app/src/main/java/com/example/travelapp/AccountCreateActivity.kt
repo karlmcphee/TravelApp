@@ -1,5 +1,6 @@
 package com.example.travelapp
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,19 +19,17 @@ class AccountCreateActivity : AppCompatActivity() {
     lateinit var registerButton: Button
     lateinit var emailData: EditText
     lateinit var passwordData: EditText
+    lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_account_create)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        emailData = findViewById(R.id.email_field)
-        passwordData = findViewById(R.id.password_field)
+        emailData = findViewById(R.id.register_email_field)
+        passwordData = findViewById(R.id.register_password_field)
         registerButton = findViewById(R.id.register_button)
+        loginButton = findViewById(R.id.to_login_button)
         registerButton.setOnClickListener {
             auth.createUserWithEmailAndPassword(emailData.text.toString(), passwordData.text.toString())
                 .addOnCompleteListener(this) { task ->
@@ -50,6 +49,10 @@ class AccountCreateActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+        }
+        loginButton.setOnClickListener{
+            val i = Intent(applicationContext, MainActivity::class.java)
+            startActivity(i)
         }
 
 

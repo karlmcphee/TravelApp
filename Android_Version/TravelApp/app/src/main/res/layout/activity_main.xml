@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AccountCreateActivity">
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/register" />
+    android:background="@drawable/homebackground"
+    >
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -20,7 +17,7 @@
         android:layout_marginTop="40dp"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/register_email_field"
+            android:id = "@+id/email_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email" />
@@ -35,25 +32,47 @@
         android:layout_marginTop="20dp"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/register_password_field"
+            android:id = "@+id/password_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_button"
-        android:text="Sign up"
-        android:layout_gravity="center_horizontal"
-        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/to_login_button"
-        android:text="Log in"
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/LoginButton"
+        android:text="Sign In"
+        android:layout_gravity="center"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/forgotPassword"
+        android:onClick="forgotPassword"
+        android:clickable="true"
+        />
+        <TextView
+            android:id="@+id/createAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/createAccount"
+            android:onClick="registerAccount"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
